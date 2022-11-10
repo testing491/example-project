@@ -1,7 +1,5 @@
 function Pokemon({pokemon}){
 
-    console.log(pokemon)
-
     return (
         <div>
             <h1>{`Pokémon #${pokemon.id}`}</h1>
