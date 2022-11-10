@@ -9,6 +9,7 @@ function App() {
   const [pokemons, setPokemons] = useState([])
   const [formData, setFormData] = useState({})
   const [errors, setErrors] = useState([])
+  const [formSubmitted, setFormSubmitted] = useState(false)
 
   useEffect(() => {
     fetch("/hello")
@@ -41,6 +42,7 @@ function App() {
         response.json().then(pokemon => {
           setPokemons([...pokemons, pokemon])
           setErrors([])
+          setFormSubmitted(true)
         })
       }
       else{
@@ -60,7 +62,7 @@ function App() {
             <PokemonContainer pokemons={pokemons}/>
           </Route>
           <Route exact path="/create_pokemon">
-            <CreatePokemonForm handleChange={handleChange} handleSubmit={handleSubmit} errors={errors}/>
+            <CreatePokemonForm handleChange={handleChange} handleSubmit={handleSubmit} errors={errors} formSubmitted={formSubmitted}/>
           </Route>
           <Route exact path="/">
             <h1>Welcome to the Pokémon App!</h1>

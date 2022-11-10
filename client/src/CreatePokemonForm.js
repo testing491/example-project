@@ -1,9 +1,13 @@
-function CreatePokemonForm({handleChange, handleSubmit, errors}){
+function CreatePokemonForm({handleChange, handleSubmit, errors, formSubmitted}){
 
     const errorList = errors.map((error, index) => {
         return <li key={index} style={{color:"red"}}>{error}</li>
     })
-    
+
+    if(formSubmitted){
+        return <h1>Thank you for your submission!</h1>
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
